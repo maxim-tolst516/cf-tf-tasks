@@ -1,0 +1,21 @@
+Parameters:
+  InstanceTypeParameter:
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t2.micro
+      - t2.small
+    Description: Enter t2.micro, t2.small  Default is t2.micro.
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Simple EC2 isntance
+Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties: 
+      ImageId: "ami-077e31c4939f6a2f3"
+      InstanceType:
+        Ref: InstanceTypeParameter
+Outputs:
+  EC2Port:
+    Description: IP of EC2 instance
+    Value: !GetAtt  MyEC2Instance.PublicIp 
