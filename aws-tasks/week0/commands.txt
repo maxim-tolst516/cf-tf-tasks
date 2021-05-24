@@ -1,0 +1,5 @@
+ aws cloudformation create-stack --stack-name stack3 --region us-east-2 --template-body file://simpleEC2.yml
+ 
+ aws cloudformation update-stack --stack-name stack3 --template-url https://cf-templates-1rz1dxdooisj2-us-east-2.s3.us-east-2.amazonaws.com/simpleEC2.yml --region us-east-2
+
+ aws cloudformation delete-stack --stack-name stack3 --region us-east-2
