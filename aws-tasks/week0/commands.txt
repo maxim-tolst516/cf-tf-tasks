@@ -3,3 +3,11 @@
  aws cloudformation update-stack --stack-name stack3 --template-url https://cf-templates-1rz1dxdooisj2-us-east-2.s3.us-east-2.amazonaws.com/simpleEC2.yml --region us-east-2
 
  aws cloudformation delete-stack --stack-name stack3 --region us-east-2
+aws cloudformation update-stack --stack-name stack3 --region us-east-2 --template-body file://stackEC2andASG.yml
+ ///
+ #!/bin/bash
+ yum update -y
+ yum install -y httpd
+ systemctl start httpd
+ systemctl enable httpd
+ echo "<h1>Hello World from $(hostname -f)</h1>)" > /var/www/html/index.html
