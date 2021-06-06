@@ -11,7 +11,7 @@ Description: Simple EC2 isntance
 Resources:
   MyEC2Instance:
     Type: "AWS::EC2::Instance"
-    Properties: 
+    Properties:
       IamInstanceProfile: !Ref BaseInstanceProfile
       ImageId: "ami-077e31c4939f6a2f3"
       InstanceType:
@@ -19,8 +19,9 @@ Resources:
       KeyName: es-tut
       UserData:
         Fn::Base64: !Sub |
+          #!/bin/bash
           sudo yum update -y
-          aws s3 cp s3://week2-backet/temp.txt files/tmp.txt &> log.txt
+          aws s3 cp s3://week2-backet/temp.txt /files/tmp.txt
   BaseInstanceProfile:
     Type: AWS::IAM::InstanceProfile
     Properties:
@@ -37,7 +38,7 @@ Resources:
             Principal:
               Service: ec2.amazonaws.com
             Action: sts:AssumeRole
-      Path: /   
+      Path: /
   RolePolices:
     Type: AWS::IAM::Policy
     DependsOn:
@@ -51,7 +52,7 @@ Resources:
             Action: 's3:*'
             Resource: '*'
       Roles:
-        - !Ref S3WritableRole  
+        - !Ref S3WritableRole
   EC3SecurituGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
