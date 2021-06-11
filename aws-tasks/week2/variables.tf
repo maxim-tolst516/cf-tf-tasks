@@ -1,5 +1,5 @@
 variable "instance_name" {
-  description = "Name tag for the EC2 instance"
+  description = "password"
   type = string
-  default = "exampleAppServiceInstance"
+  default = "password"
 }
